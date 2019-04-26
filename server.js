@@ -58,10 +58,5 @@ mongoose.connect(dbConfig.DB, {
 });
  */
 
-const MongoClient = require('mongodb').MongoClient;
-const client = new MongoClient(dbConfig.DB, { useNewUrlParser: true });
-client.connect(err => {
-    console.log(err);
-  // perform actions on the collection object
-  client.close();
-});
+mongoose.connect( `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@argmax-info-o3xdy.mongodb.net/test?retryWrites=true`, 
+{ useNewUrlParser: true } ).then(() => { app.listen(dbConfig.port); }) .catch(err => { console.log(err); });
