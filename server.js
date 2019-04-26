@@ -42,11 +42,10 @@ require('./routes/user.routes')(app);
 mongoose.Promise = global.Promise;
 
 
-
-mongoose.connect( `mongodb+srv://lenngro:lg93--hu@argmax-info-o3xdy.mongodb.net/test?retryWrites=true`, 
+mongoose.connect( `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@argmax-info-o3xdy.mongodb.net/test?retryWrites=true`, 
 { useNewUrlParser: true } ).then(() => {
+    console.log("Successfully connected to the db.")
     app.listen(dbConfig.port); 
-    console.log("Successfully connected to the database");    
 }).catch(err => 
     { console.log(err); }
     );
