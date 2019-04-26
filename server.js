@@ -45,8 +45,6 @@ mongoose.Promise = global.Promise;
 mongoose.connect( `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@argmax-info-o3xdy.mongodb.net/test?retryWrites=true`, 
 { useNewUrlParser: true } ).then(() => {
     console.log("Successfully connected to the db.")
-    console.log("Listening on port " + ""+dbConfig.port);
-    app.listen(dbConfig.port); 
 }).catch(err => 
     { console.log(err); }
     );
