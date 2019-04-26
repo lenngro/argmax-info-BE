@@ -38,8 +38,8 @@ app.get('/', (req, res) => {
 });
 
 // listen for requests
-app.listen(8081, () => {
-    console.log("Server is listening on port 3000");
+app.listen(dbConfig.port, () => {
+    console.log("Server is listening on port " + ""+dbConfig.port);
 });
 
 require('./routes/post.routes')(app);
