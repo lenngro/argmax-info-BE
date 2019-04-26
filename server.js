@@ -46,6 +46,7 @@ require('./routes/post.routes')(app);
 require('./routes/user.routes')(app);
 mongoose.Promise = global.Promise;
 
+/**
 // Connecting to the database
 mongoose.connect(dbConfig.DB, {
     useNewUrlParser: true
@@ -54,4 +55,13 @@ mongoose.connect(dbConfig.DB, {
 }).catch(err => {
     console.log('Could not connect to the database. Exiting now...', err);
     process.exit();
+});
+ */
+
+const MongoClient = require('mongodb').MongoClient;
+const client = new MongoClient(dbConfig.DB, { useNewUrlParser: true });
+client.connect(err => {
+    console.log(err);
+  // perform actions on the collection object
+  client.close();
 });
