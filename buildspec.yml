@@ -3,6 +3,6 @@ version: 0.2
 phases:
   install:
     commands:
-      - sudo apt-get install python-pip
+      - apt-get install python-pip
       - npm install
       - pip install --upgrade awscli
