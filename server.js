@@ -37,26 +37,16 @@ app.get('/', (req, res) => {
     res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
 });
 
-// listen for requests
-app.listen(dbConfig.port, () => {
-    console.log("Server is listening on port " + ""+dbConfig.port);
-});
-
 require('./routes/post.routes')(app);
 require('./routes/user.routes')(app);
 mongoose.Promise = global.Promise;
 
-/**
-// Connecting to the database
-mongoose.connect(dbConfig.DB, {
-    useNewUrlParser: true
-}).then(() => {
-    console.log("Successfully connected to the database");    
-}).catch(err => {
-    console.log('Could not connect to the database. Exiting now...', err);
-    process.exit();
-});
- */
 
-mongoose.connect( `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@argmax-info-o3xdy.mongodb.net/test?retryWrites=true`, 
-{ useNewUrlParser: true } ).then(() => { app.listen(dbConfig.port); }) .catch(err => { console.log(err); });
+
+mongoose.connect( `mongodb+srv://lenngro:lg93--hu@argmax-info-o3xdy.mongodb.net/test?retryWrites=true`, 
+{ useNewUrlParser: true } ).then(() => {
+    app.listen(dbConfig.port); 
+    console.log("Successfully connected to the database");    
+}).catch(err => 
+    { console.log(err); }
+    );
