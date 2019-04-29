@@ -45,7 +45,6 @@ require('./routes/user.routes')(app);
 mongoose.Promise = global.Promise;
 
 let url = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@argmax-info-o3xdy.mongodb.net/test?retryWrites=true`;
-console.log(url)
 mongoose.connect( url, 
 { useNewUrlParser: true } ).then(() => {
     console.log("Successfully connected to the db.")
