@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // parse requests of content-type - application/json
 app.use(bodyParser.json())
 
+/**
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
@@ -32,10 +33,11 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
+*/
 
 // define a simple route
 app.get('/', (req, res) => {
-    res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
+    res.json({"message": "Welcome to argmax.info's backend."});
 });
 
 require('./routes/post.routes')(app);
