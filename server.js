@@ -3,6 +3,7 @@ const dbConfig = require('./DB');
 const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
+const http = require('http');
 
 // create express app
 const app = express();
@@ -49,3 +50,5 @@ mongoose.connect( url,
 }).catch(err => 
     { console.log(err); }
     );
+
+http.createServer(app).listen(process.env.PORT || 8000)
