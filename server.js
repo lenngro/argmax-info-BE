@@ -4,15 +4,18 @@ const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
 const http = require('http');
+const cors = require('cors')
 
 const app = express();
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-
+app.use(cors())
 app.get('/', (req, res) => {
     res.json({"message": "Welcome to argmax.info's backend."});
 });
+
+
 
 // link to defined routes
 require('./routes/post.routes')(app);
