@@ -8,6 +8,7 @@ exports.create = (req, res) => {
             message: "Post content can not be empty"
         });
     }
+    console.log(req.body)
     const post = new Post({
         title: req.body.title,
         description: req.body.description,
