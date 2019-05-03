@@ -14,8 +14,8 @@ app.use(cors())
 app.get('/', (req, res) => {
     res.json({"message": "Welcome to argmax.info's backend."});
 });
-app.use(express.json({limit: '50mb'}));
-app.use(express.urlencoded({limit: '50mb'}));
+app.use(bodyParser.json({limit: "100mb"}));
+app.use(bodyParser.urlencoded({limit: "100mb", extended: true, parameterLimit:50000}));
 
 // link to defined routes
 require('./routes/post.routes')(app);
