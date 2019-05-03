@@ -9,15 +9,16 @@ exports.create = (req, res) => {
         });
     }
     const post = new Post({
-        id: "10",
-        date: "today",
-        content: req.body.content
+        title: req.body.title,
+        description: req.body.description,
+        content: req.body.content,
+        date: new Date().getDate().toLocaleString(),
     });
 
     // Save Post in the database
     post.save()
     .then(data => {
-        res.send(data);
+        res.send("true");
     }).catch(err => {
         res.status(500).send({
             message: err.message || "Some error occurred while creating the Post."
@@ -72,8 +73,8 @@ exports.update = (req, res) => {
 
     // Find note and update it with the request body
     Post.findByIdAndUpdate(req.params.postId, {
-        id: req.body.id,
         title: req.body.title,
+        description: req.body.description,
         content: req.body.content
     }, {new: true})
     .then(post => {
@@ -82,7 +83,7 @@ exports.update = (req, res) => {
                 message: "Post not found with id " + req.params.postId
             });
         }
-        res.send(post);
+        res.send("true");
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({

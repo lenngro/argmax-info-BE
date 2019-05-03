@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 
 var PostSchema = mongoose.Schema({
-    id: { type: String },
-    date: { type: String },
-    content: { type: String }},
+    title: { type: String },
+    description: { type: String },
+    content: { type: String },
+    date: { type: String }},
     {
         versionKey : false
-    });
+    },
+    );
     module.exports = mongoose.model('Post', PostSchema);
