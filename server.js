@@ -7,15 +7,13 @@ const http = require('http');
 const cors = require('cors')
 
 const app = express();
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+var app = express();
+app.use(bodyParser.urlencoded({limit: '50mb', extended: false}));
+app.use(bodyParser.json({limit: '50mb'}));
 app.use(cors())
 app.get('/', (req, res) => {
     res.json({"message": "Welcome to argmax.info's backend."});
 });
-app.use(bodyParser.json({limit: "100mb"}));
-app.use(bodyParser.urlencoded({limit: "100mb", extended: true, parameterLimit:50000}));
 
 // link to defined routes
 require('./routes/post.routes')(app);
