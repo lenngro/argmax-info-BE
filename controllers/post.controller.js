@@ -8,11 +8,10 @@ exports.create = (req, res) => {
             message: "Post content can not be empty"
         });
     }
-    console.log(req.body)
     const post = new Post({
-        title: req.body.title,
-        description: req.body.description,
-        content: req.body.content,
+        title: req.body.content.title,
+        description: req.body.content.description,
+        content: req.body.content.content,
         date: new Date().getDate().toLocaleString(),
     });
 
@@ -74,9 +73,9 @@ exports.update = (req, res) => {
 
     // Find note and update it with the request body
     Post.findByIdAndUpdate(req.params.postId, {
-        title: req.body.title,
-        description: req.body.description,
-        content: req.body.content
+        title: req.body.content.title,
+        description: req.body.content.description,
+        content: req.body.content.content
     }, {new: true})
     .then(post => {
         if(!post) {
