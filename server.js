@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const http = require('http');
 const cors = require('cors')
 
-const app = express();
 var app = express();
 app.use(bodyParser.urlencoded({limit: '50mb', extended: false}));
 app.use(bodyParser.json({limit: '50mb'}));
