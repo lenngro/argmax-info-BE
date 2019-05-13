@@ -12,6 +12,7 @@ exports.create = (req, res) => {
         title: req.body.content.title,
         description: req.body.content.description,
         content: req.body.content.content,
+        url: req.body.content.url,
         date: new Date().getDate().toLocaleString(),
     });
 
@@ -75,6 +76,7 @@ exports.update = (req, res) => {
     Post.findByIdAndUpdate(req.params.postId, {
         title: req.body.content.title,
         description: req.body.content.description,
+        url: req.body.content.url,
         content: req.body.content.content
     }, {new: true})
     .then(post => {
