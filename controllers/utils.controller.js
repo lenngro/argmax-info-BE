@@ -4,7 +4,7 @@ exports.findAll = (req, res) => {
 
     // db.inventory.find( { status: "A" }, { item: 1, status: 1 } )
 
-    Post.findAll({}, { title: 1, description: 1, url: 1 })
+    Post.find({}, { title: 1, description: 1, url: 1 })
         .then(postList => {
             res.send(postList);
         }).catch(err => {
