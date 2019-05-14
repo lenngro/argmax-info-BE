@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
 // link to defined routes
 require('./routes/post.routes')(app);
 require('./routes/user.routes')(app);
+require('./routes/utils.routes')(app);
 mongoose.Promise = global.Promise;
 
 mongoose.connect( dbConfig.url, 
