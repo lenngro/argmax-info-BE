@@ -42,7 +42,7 @@ exports.findAll = (req, res) => {
 
 // Find a single note with a postId
 exports.findOne = (req, res) => {
-    Post.findById(req.params.postId)
+    Post.findOne({'title': req.body.content.title, 'url': req.body.content.url})
     .then(post => {
         if(!post) {
             return res.status(404).send({
